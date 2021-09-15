@@ -1,4 +1,36 @@
 {
   "name": "md-links",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "description": "se crea una libreria que verifica las links dentro de cada archivo con extensión (markdown) y permite validar dichos links y realizar algunas estadisticas.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --verbose --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makemile/LIM015-md-links.git"
+  },
+  "keywords": [
+    "javaScript",
+    "node",
+    "package",
+    "jest",
+    "testing"
+  ],
+  "author": "Kengya Moncada <mkengya@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/makemile/LIM015-md-links/issues"
+  },
+  "homepage": "https://github.com/makemile/LIM015-md-links#readme",
+  "dependencies": {
+    "eslint-utils": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "jest": "^27.2.0"
+  }
 }
