@@ -2,7 +2,6 @@
   "name": "md-links",
   "version": "0.1.0",
   "description": "se crea una libreria que verifica las links dentro de cada archivo con extensión (markdown) y permite validar dichos links y realizar algunas estadisticas.",
-  "main": "index.js",
   "directories": {
     "test": "test"
   },
@@ -27,7 +26,9 @@
   },
   "homepage": "https://github.com/makemile/LIM015-md-links#readme",
   "dependencies": {
-    "eslint-utils": "^3.0.0"
+    "eslint-utils": "^3.0.0",
+    "index.js": "0.0.3",
+    "nodemon": "^2.0.12"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
