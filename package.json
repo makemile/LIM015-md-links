@@ -20,13 +20,12 @@
     "testing"
   ],
   "author": "Kengya Moncada <mkengya@gmail.com>",
-  "license": "MIT",
+  "license": "SCI",
   "bugs": {
     "url": "https://github.com/makemile/LIM015-md-links/issues"
   },
   "homepage": "https://github.com/makemile/LIM015-md-links#readme",
   "dependencies": {
-    "eslint-utils": "^3.0.0",
     "index.js": "0.0.3",
     "nodemon": "^2.0.12"
   },
