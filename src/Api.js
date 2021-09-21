@@ -1,6 +1,5 @@
 const fs = require('fs'); //nos devuelve un objeto, lo almacenamos dentro de una constante//
 const path = require('path');
-const Path = require('path');
 
 
 //function the path exists?//
@@ -13,12 +12,12 @@ function existsPath (route){
 //function if path is an absolute path//
 
 function absoluteIsPaht(pathRelative){
-  return Path.isAbsolute(pathRelative)
+  return path.isAbsolute(pathRelative)
 }
 
 //function Convert relative to absolute path//
 function convertAbsolute(pathAbsolute){
-  return Path.resolve(pathAbsolute)
+  return path.resolve(pathAbsolute)
 }
 
 //function if path is directory//
@@ -42,15 +41,25 @@ function isFile(route) {
 //2. llamar a la funcion con un argumento distinto que nos permita llegar algun momento a la condicion de parada//
 
 
-// function fileDir( file)  {
-//      return readDirectory(file).map((element) => {
-//        const path= Path.join(file + '/' + element);
-//        return fs.lstatSync(path).isDirectory() 
-//    });
-//   };
+function getFilesArray(route) {
+const newArray = [];
+if(isDirectory(route)) {
+  readDirectory(route).forEach((element) => {
+    // console.log(path.resolve(route + '/' + element));
+   path.join(route + '/' + element);
+const ArrayElement= getFilesArray(path.resolve(route + '/' + element));
+ArrayElement.concat(newArray);//guardar este valor que devuelva con una const , hya qe juntarlo con nuestro new array
+});
 
+}else{
+   newArray.push(route)
+  }
 
-// console.log(isFile('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba1.md'),49);
+ return newArray;
+  
+};
+
+console.log(getFilesArray('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib'));
 
 //validate is file.md?//
 function extensionIsMd(route){
@@ -74,5 +83,6 @@ module.exports = {
   readDirectory,
   isFile,
   extensionIsMd,
-  readFile
+  readFile,
+  getFilesArray
 };
