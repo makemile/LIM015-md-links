@@ -95,3 +95,6 @@ describe('se puede leer el archivo md', () =>{
     expect(readFile('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\linkroto.md'))
   })
 })
+
+//test directrio
+//test archivo
