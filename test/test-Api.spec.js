@@ -2,8 +2,11 @@ const {
 existsPath,
 absoluteIsPaht,
 convertAbsolute,
-stats,
-getDirAndFiel
+isDirectory,
+readDirectory,
+isFile,
+extensionIsMd,
+readFile
 } = require('../src/Api.js');
 
 //function the path exists?//
@@ -35,21 +38,60 @@ expect(convertAbsolute('lib/Recursos/recursos2/Dos links.md')).toEqual(`C:\\User
  //function if path is directory//
  describe('si path es un directorio', () => {
    test('validar si es un función', () => {
-     expect(typeof stats).toBe('function');
+     expect(typeof isDirectory).toBe('function');
    });
 
    it('retorna un bolean, si path es un directorio', () => {
-    expect(stats(`C:\\Users\\KENGYA\\Documents`)).toBe(true);
+    expect(isDirectory(`C:\\Users\\KENGYA\\Documents`)).toBe(true);
  });
 
- it('retorna un bolean, si path no es un directorio', () => {
-  expect(stats(`/lib`)).toBe(false);
+ it('retorna un bolean, si path no es un archivo', () => {
+  expect(isDirectory(`C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos links.md`)).toBe(false);
 
    });
 });
 
+//function readDirectory//
 describe('si path tiene archivos anidados', () => {
   test('validar si es una funcion', () => {
-    expect(typeof getDirAndFiel).toBe('function');
+    expect(typeof readDirectory).toBe('function');
   });
 });
+
+
+//function validate is fiel?//
+describe('validar si es un archivo', ()=> {
+  test('validar si es una funcion', () =>{
+    expect(typeof isFile).toBe('function');
+    });
+    it('restorna un bolean, si es un archivo', () => {
+      expect(isFile('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba1.md')).toBe(true);
+    
+  })
+  it('retorna un bolean, si no es un archivo', () => {
+    expect(isFile('C:\\Users\\KENGYA\\Documents')).toBe(false);
+  });
+});
+
+//function isMd//
+describe('validar si es un archivo con extension Md', () => {
+  test('validar si es una funcion', () => {
+    expect(typeof extensionIsMd).toBe('function');
+  });
+  it('retorna un bolean, si es un archivo con extension md', () =>{
+   expect(extensionIsMd('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\linkroto.md')).toBe(true);
+  });
+  it('retorna un bolean, si no es un archivo con extension md', () =>{
+    expect(extensionIsMd('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\prueba.txt')).toBe(false);
+  });
+});
+
+// read file.md//
+describe('se puede leer el archivo md', () =>{
+  test('validar si es una funcion', () => {
+    expect(typeof readFile).toBe('function');
+  });
+  it('se puede leer el archivo md',() => {
+    expect(readFile('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\linkroto.md'))
+  })
+})
