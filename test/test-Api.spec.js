@@ -6,7 +6,8 @@ isDirectory,
 readDirectory,
 isFile,
 extensionIsMd,
-readFile
+readFile,
+getFilesArray
 } = require('../src/Api.js');
 
 //function the path exists?//
@@ -96,5 +97,24 @@ describe('se puede leer el archivo md', () =>{
   })
 })
 
+
+describe('nos retorne un array de archivo md', () => {
+  test('validar si es una funcion', () =>{
+    expect(typeof getFilesArray).toBe('function')
+  });
+})
+
+  describe('extrae en un array rutas de archivos .md', () => {
+  it('retorna un array con extension de archivo md', ()=> {
+    const arrayMd = [
+      'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\linkroto.md',
+      'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba1.md',
+      'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba2.md',
+      'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba3.md',
+      'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos links.md'
+    ];
+    expect(getFilesArray('C:/Users/KENGYA/Documents/Develop/LIM015-md-links/lib')).toEqual(arrayMd);
+  });
+});
 //test directrio
 //test archivo
