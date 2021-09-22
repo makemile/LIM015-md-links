@@ -1,5 +1,6 @@
 const fs = require('fs'); //nos devuelve un objeto, lo almacenamos dentro de una constante//
 const path = require('path');
+// const marked = require('marked');
 
 
 //function the path exists?//
@@ -7,13 +8,10 @@ function existsPath (route){
   return fs.existsSync(route)
 
   }
-// console.log(existsPath('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba1.md'));
-
-//function if path is an absolute path//
+  //function if path is an absolute path//
 
 function absoluteIsPaht(pathRelative){
-  return path.isAbsolute(pathRelative)
-}
+  return path.isAbsolute(pathRelative) ===true ?relativePath : path.resolve(relativePath)}
 
 //function Convert relative to absolute path//
 function convertAbsolute(pathAbsolute){
@@ -22,7 +20,7 @@ function convertAbsolute(pathAbsolute){
 
 //function if path is directory//
 function isDirectory(path){
-  return fs.statSync(path).isDirectory();//statsync
+  return fs.statSync(path).isDirectory();
 }
 
 //readdir directory//
@@ -35,33 +33,7 @@ function isFile(route) {
   return fs.statSync(route).isFile();
   }
 
-// recursive synchronous//
-//es cuando una funcion se llama a si misma//
-//1. condicion de parada//
-//2. llamar a la funcion con un argumento distinto que nos permita llegar algun momento a la condicion de parada//
-
-
-function getFilesArray(route) {
-const newArray = [];
-if(isDirectory(route)) {
-  readDirectory(route).forEach((element) => {
-    // console.log(path.resolve(route + '/' + element));
-   path.join(route + '/' + element);
-const ArrayElement= getFilesArray(path.resolve(route + '/' + element));
-ArrayElement.concat(newArray);//guardar este valor que devuelva con una const , hya qe juntarlo con nuestro new array
-});
-
-}else{
-   newArray.push(route)
-  }
-
- return newArray;
-  
-};
-
-console.log(getFilesArray('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib'));
-
-//validate is file.md?//
+  //validate is file.md?//
 function extensionIsMd(route){
   return path.extname(route) === '.md' ? true: false;
 }
@@ -71,6 +43,29 @@ function readFile(route){
   return fs.readFileSync(route).toString();
 }
 
+// recursive synchronous//
+//es cuando una funcion se llama a si misma//
+//1. condicion de parada//
+//2. llamar a la funcion con un argumento distinto que nos permita llegar algun momento a la condicion de parada//
+// let newArray = [];
+
+const mdArray = [];
+function getFilesArray(route) {
+if(isDirectory(route)) {
+ readDirectory(route).forEach((element) => {
+    const newPath = path.join(route, element);
+  getFilesArray(path.resolve(newPath));
+//  ArrayElement.concat(newArray);
+
+ });
+
+}else if(!isDirectory(route) && extensionIsMd(route)){
+   mdArray.push(route);
+  }
+  return mdArray
+
+};
+console.log(getFilesArray('C:/Users/KENGYA/Documents/Develop/LIM015-md-links/lib'),69);
 
 
 
