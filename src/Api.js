@@ -43,29 +43,29 @@ function readFile(route){
   return fs.readFileSync(route).toString();
 }
 
-// recursive synchronous//
+//recursive synchronous//
 //es cuando una funcion se llama a si misma//
 //1. condicion de parada//
 //2. llamar a la funcion con un argumento distinto que nos permita llegar algun momento a la condicion de parada//
 // let newArray = [];
 
-const mdArray = [];
+
 function getFilesArray(route) {
+  let mdArray = [];
 if(isDirectory(route)) {
  readDirectory(route).forEach((element) => {
     const newPath = path.join(route, element);
-  getFilesArray(path.resolve(newPath));
-//  ArrayElement.concat(newArray);
-
+  const fileArray = getFilesArray(path.resolve(newPath));
+  mdArray = mdArray.concat(fileArray);
  });
 
 }else if(!isDirectory(route) && extensionIsMd(route)){
    mdArray.push(route);
   }
-  return mdArray
+  return mdArray;
 
 };
-console.log(getFilesArray('C:/Users/KENGYA/Documents/Develop/LIM015-md-links/lib'),69);
+ console.log(getFilesArray('C:/Users/KENGYA/Documents/Develop/LIM015-md-links/lib'),69);
 
 
 
