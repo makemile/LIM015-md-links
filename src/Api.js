@@ -67,6 +67,20 @@ if(isDirectory(route)) {
 };
  console.log(getFilesArray('C:/Users/KENGYA/Documents/Develop/LIM015-md-links/lib'),69);
 
+ // search links//
+
+//  function searchLinks(route){
+//    let arraLinks = [];
+
+//    getFilesArray(route).forEach((file) => {
+//      const pathJoin = path.join(route, file);
+//      console.log( getFilesArray(route).forEach((file)));
+//    })
+  
+//  }
+
+ console.log(searchLinks('C:\Users\KENGYA\Documents\Develop\LIM015-md-links\lib\Recursos\Prueba1.md'));
+
 
 
 
@@ -79,5 +93,6 @@ module.exports = {
   isFile,
   extensionIsMd,
   readFile,
-  getFilesArray
+  getFilesArray,
+  searchLinks
 };
