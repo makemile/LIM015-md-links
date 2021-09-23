@@ -1,5 +1,7 @@
+#Visual Studio files
 .DS_Store
 *.swp
 .nyc_output/
 coverage/
 node_modules/
+lib/
