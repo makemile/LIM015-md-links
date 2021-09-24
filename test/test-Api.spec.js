@@ -1,5 +1,4 @@
-const {
-existsPath,
+const { existsPath,
 absoluteIsPaht,
 convertAbsolute,
 isDirectory,
@@ -7,7 +6,7 @@ readDirectory,
 isFile,
 extensionIsMd,
 readFile,
-getFilesArray
+getFilesArray,
 } = require('../src/Api.js');
 
 //function the path exists?//
@@ -116,5 +115,3 @@ describe('nos retorne un array de archivo md', () => {
     expect(getFilesArray('C:/Users/KENGYA/Documents/Develop/LIM015-md-links/lib')).toEqual(arrayMd);
   });
 });
-//test directrio
-//test archivo

@@ -1,6 +1,6 @@
 const fs = require('fs'); //nos devuelve un objeto, lo almacenamos dentro de una constante//
 const path = require('path');
-// const marked = require('marked');
+const marked = require('marked');
 
 
 //function the path exists?//
@@ -11,7 +11,7 @@ function existsPath (route){
   //function if path is an absolute path//
 
 function absoluteIsPaht(pathRelative){
-  return path.isAbsolute(pathRelative) ===true ?relativePath : path.resolve(relativePath)}
+  return path.isAbsolute(pathRelative) === true ?relativePath : path.resolve(relativePath)}
 
 //function Convert relative to absolute path//
 function convertAbsolute(pathAbsolute){
@@ -52,6 +52,7 @@ function readFile(route){
 
 function getFilesArray(route) {
   let mdArray = [];
+  absoluteIsPaht
 if(isDirectory(route)) {
  readDirectory(route).forEach((element) => {
     const newPath = path.join(route, element);
@@ -67,19 +68,31 @@ if(isDirectory(route)) {
 };
  console.log(getFilesArray('C:/Users/KENGYA/Documents/Develop/LIM015-md-links/lib'),69);
 
- // search links//
+ 
+// search links//
 
-//  function searchLinks(route){
-//    let arraLinks = [];
+function searchLinks(route){
+    let arrayLinks = [];
+    const renderer = new marked.Renderer();
+    const ArrayGetMd = getFilesArray(route);
+    ArrayGetMd.forEach((file) => {
+    renderer.link = ( href, text, title) => {
+      const objLinks = {
+       file,
+       href,
+       text: 'falta'
+      };
+   //extration links
+      arrayLinks.push(objLinks);
+     
+    };
+    marked(readFile(file), { renderer });
 
-//    getFilesArray(route).forEach((file) => {
-//      const pathJoin = path.join(route, file);
-//      console.log( getFilesArray(route).forEach((file)));
-//    })
-  
-//  }
+    });
+    return arrayLinks;
+  };
 
- console.log(searchLinks('C:\Users\KENGYA\Documents\Develop\LIM015-md-links\lib\Recursos\Prueba1.md'));
+ console.log(searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib'));
 
 
 
