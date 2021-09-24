@@ -7,6 +7,7 @@ isFile,
 extensionIsMd,
 readFile,
 getFilesArray,
+searchLinks
 } = require('../src/Api.js');
 
 //function the path exists?//
@@ -113,5 +114,41 @@ describe('nos retorne un array de archivo md', () => {
       'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos links.md'
     ];
     expect(getFilesArray('C:/Users/KENGYA/Documents/Develop/LIM015-md-links/lib')).toEqual(arrayMd);
+  });
+});
+
+describe('extraer links de los archivos .md', () => {
+  test('validar si es una función', () => {
+    expect(typeof searchLinks).toBe('function')
+  });
+  it('nos retorna un array de links', () => {
+    const arrayLinks = [
+      {
+        href: 'https://www.figma.com/blog/1',
+        text: 'figma',
+        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\linkroto.md'
+      },
+      {
+        href: 'https://www.google.com',
+        text: 'Google',
+        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba1.md'
+      },
+      {
+        href: 'https://es.wikipedia.org/wiki/Markdown',
+        text: 'Markdown',
+        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos links.md'
+      },
+      {
+        href: 'https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg',
+        text: 'mdlinks',
+        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos links.md'
+      },
+      {
+        href: 'https://jestjs.io/es-ES/docs/manual-mocks',
+        text: 'mocks',
+        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos links.md'
+      }
+    ];
+    expect(searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib')).toEqual(arrayLinks);
   });
 });

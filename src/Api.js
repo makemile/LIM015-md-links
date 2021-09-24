@@ -3,6 +3,7 @@ const path = require('path');
 const marked = require('marked');
 
 
+
 //function the path exists?//
 function existsPath (route){
   return fs.existsSync(route)
@@ -76,11 +77,11 @@ function searchLinks(route){
     const renderer = new marked.Renderer();
     const ArrayGetMd = getFilesArray(route);
     ArrayGetMd.forEach((file) => {
-    renderer.link = ( href, text, title) => {
+    renderer.link = ( href, title, text) => {
       const objLinks = {
-       file,
        href,
-       text: 'falta'
+       text,
+       file
       };
    //extration links
       arrayLinks.push(objLinks);
@@ -107,5 +108,5 @@ module.exports = {
   extensionIsMd,
   readFile,
   getFilesArray,
-  searchLinks
+  searchLinks,
 };
