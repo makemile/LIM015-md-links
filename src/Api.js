@@ -1,6 +1,10 @@
 const fs = require('fs'); //nos devuelve un objeto, lo almacenamos dentro de una constante//
 const path = require('path');
 const marked = require('marked');
+const fetch = require('node-fetch');
+const { response, json } = require('express');
+const { error } = require('console');
+const { resolve } = require('path');
 
 
 
@@ -93,11 +97,42 @@ function searchLinks(route){
     return arrayLinks;
   };
 
- console.log(searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib'));
+//  console.log(searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib'));
+
+ const validateLinks = (arraylink) => {
+  const arraysPromise = arraylink.map((element) => { //recorro mi array de objeto
+    const myPromise = (fetch(element) //promesa// ejecuto una promesa por cada elemnto
+  .then((res) =>{
+const obj = {
+  href: element.href,
+  text: element.text,
+  file: element.file,
+  status: res.status,
+  message : res.status > 199  && res.status <= 399 ? 'ok' : 'fail'
+}
+    
+    // console.log(obj, 114);
+    return obj;
+    
+  })
+  .catch((error) => {
+    // console.log(error.message, 114);
+    
+
+  }))
+   return myPromise; //map debo construir un array de promesa
+  });
+  console.log(Promise.all(arraysPromise));
+  return Promise.all(arraysPromise); //pasarle un array de promesas
+  
+ };
+    
+ const saveArray = searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib')
+ validateLinks(saveArray).then((res)=>console.log(res)); //la estoy consumiendo
+ 
 
 
-
-
+//funcion de mdlinks debe ir dentro de una promesa, aca (declararlas) diagrama flujo! mdlinks juntarlas
 module.exports = {
   existsPath,
   absoluteIsPaht,
@@ -109,4 +144,5 @@ module.exports = {
   readFile,
   getFilesArray,
   searchLinks,
+  validateLinks
 };
