@@ -7,7 +7,8 @@ isFile,
 extensionIsMd,
 readFile,
 getFilesArray,
-searchLinks
+searchLinks,
+validateLinks
 } = require('../src/Api.js');
 
 //function the path exists?//
@@ -151,4 +152,73 @@ describe('extraer links de los archivos .md', () => {
     ];
     expect(searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib')).toEqual(arrayLinks);
   });
+});
+
+describe('extraer los links, mostrar su status y propiedades', () => {
+  test('debería ser una funcion', () => {
+    expect(typeof validateLinks).toBe('function');
+  });
+  // it('debería retornar un array de objetos con 3 propiedades: href, texto, archivo', () =>{
+  //   const obj = [
+  //     {
+  //        href: 'https://www.google.com',
+  //        text: 'Google',
+  //        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba1.md'
+  //     }
+  //    ];
+  
+  //    const objResult = [
+  //      {
+  //        href: 'https://www.google.com',
+  //        text: 'Google',
+  //        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba1.md',
+  //        status: 200,
+  //        message: 'ok'
+  //      }
+  //    ];
+  //    return expect(validateLinks(obj)).resolves.toEqual(objResult);
+  // });
+  
+  
+  //   it('imprimir href, text, file y si el codigo de respuesta es diferente a 200', () =>{
+  //       const obj = [
+  //          {
+  //            href: 'https://www.figma.com/blog/1',
+  //            text: 'figma',
+  //            file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\linkroto.md'
+  //          }
+  //        ];
+  //          const objResult = [{
+  //            href: 'https://www.figma.com/blog/1',
+  //            text: 'figma',
+  //           file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\linkroto.md',
+  //            status: 404,
+  //            message: 'fail'
+  //          }
+  //        ];
+  
+  //        return expect(validateLinks(obj)).resolves.toEqual(objResult);
+  // });
+  
+  // it('debería imprimir tres propiedades y un estatus:  una respuesta: fail', () => {
+  //   const obj = [
+  //      {
+  //            href: 'https://www.figma.com/blog/1',
+  //            text: 'figma',
+  //            file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\linkroto.md'
+  //          }
+  //        ];
+  //          const objResult = [{
+  //            href: 'https://www.figma.com/blog/1',
+  //            text: 'figma',
+  //            file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\linkroto.md',
+  //            status: 'oh! hubo un problema con la solictud.',
+  //            message: 'fail'
+  //          }
+  //        ];
+  //        return validateLinks(obj).then(res =>{
+  //          expect(res).toEqual(objResult);
+  //        });
+  // });
+
 });
