@@ -2,9 +2,6 @@ const fs = require('fs'); //nos devuelve un objeto, lo almacenamos dentro de una
 const path = require('path');
 const marked = require('marked');
 const fetch = require('node-fetch');
-const { response, json } = require('express');
-const { error } = require('console');
-const { resolve } = require('path');
 
 
 
@@ -71,7 +68,6 @@ if(isDirectory(route)) {
   return mdArray;
 
 };
- console.log(getFilesArray('C:/Users/KENGYA/Documents/Develop/LIM015-md-links/lib'),69);
 
  
 // search links//
@@ -96,8 +92,7 @@ function searchLinks(route){
     });
     return arrayLinks;
   };
-
-//  console.log(searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib'));
+// console.log(searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib'))
 
  const validateLinks = (arraylink) => {
   const arraysPromise = arraylink.map((element) => { //recorro mi array de objeto
@@ -110,25 +105,33 @@ const obj = {
   status: res.status,
   message : res.status > 199  && res.status <= 399 ? 'ok' : 'fail'
 }
-    
-    // console.log(obj, 114);
     return obj;
     
   })
   .catch((error) => {
-    // console.log(error.message, 114);
-    
-
-  }))
+    const creatObj = {
+      href: element.href,
+      text: element.text,
+      file: element.file,
+      status: 'oh! hubo un problema con la solictud.' + error,
+      statusResponses: 'fail'
+    };
+    return creatObj;
+  }));
    return myPromise; //map debo construir un array de promesa
   });
-  console.log(Promise.all(arraysPromise));
-  return Promise.all(arraysPromise); //pasarle un array de promesas
-  
+
+  return Promise.all(arraysPromise).then((res) => { //crear una promesa global//
+    console.log(res);
+  })
+  .catch((error) =>{
+   console.log(error);
+  });
+  //pasarle un array de promesas
  };
     
- const saveArray = searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib')
- validateLinks(saveArray).then((res)=>console.log(res)); //la estoy consumiendo
+// saveArray = searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib')
+//   validateLinks(saveArray);//la estoy consumiendo
  
 
 
