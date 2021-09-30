@@ -69,7 +69,7 @@ if(isDirectory(route)) {
 
 };
 
- 
+
 // search links//
 
 function searchLinks(route){
@@ -85,55 +85,45 @@ function searchLinks(route){
       };
    //extration links
       arrayLinks.push(objLinks);
-     
+
     };
     marked(readFile(file), { renderer });
 
     });
     return arrayLinks;
   };
-// console.log(searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib'))
+// console.log(searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba1.md'),95)
 
- const validateLinks = (arraylink) => {
-  const arraysPromise = arraylink.map((element) => { //recorro mi array de objeto
-    const myPromise = (fetch(element) //promesa// ejecuto una promesa por cada elemnto
-  .then((res) =>{
-const obj = {
-  href: element.href,
-  text: element.text,
-  file: element.file,
-  status: res.status,
-  message : res.status > 199  && res.status <= 399 ? 'ok' : 'fail'
+const validateLinks = (arrayLinks) => { //mis array de links href
+  const arraysPromise = arrayLinks.map((element) => 
+    fetch(element.href)
+    .then((res) => {
+      const obj = {
+        href: element.href,
+        text: element.text,
+        file: element.file,
+        status: res.status,
+        message: res.status > 199  && res.status <= 399 ? 'ok' : 'fail',
+      }
+      return obj;
+    })
+    .catch((error) =>{
+      const creatObj = {
+        href: element.href,
+        text: element.text,
+        file: element.file,
+        status: 'oh! hubo un problema con la solicitud.' + error,
+        statusResponses: 'fail'
+      };
+      return creatObj;
+      
+    }));
+    return Promise.all(arraysPromise)
+     
+  
 }
-    return obj;
-    
-  })
-  .catch((error) => {
-    const creatObj = {
-      href: element.href,
-      text: element.text,
-      file: element.file,
-      status: 'oh! hubo un problema con la solictud.' + error,
-      statusResponses: 'fail'
-    };
-    return creatObj;
-  }));
-   return myPromise; //map debo construir un array de promesa
-  });
-
-  return Promise.all(arraysPromise).then((res) => { //crear una promesa global//
-    console.log(res);
-  })
-  .catch((error) =>{
-   console.log(error);
-  });
-  //pasarle un array de promesas
- };
-    
-// saveArray = searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib')
-//   validateLinks(saveArray);//la estoy consumiendo
- 
-
+  saveArray = searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib')
+         validateLinks(saveArray);//la estoy consumiendo
 
 //funcion de mdlinks debe ir dentro de una promesa, aca (declararlas) diagrama flujo! mdlinks juntarlas
 module.exports = {
