@@ -33,7 +33,7 @@ describe('si path es absoluta', () => {
    });
 //function if path is an absolute path//
    it('retorna un bolean, si la ruta relativa convierte en absoluta', () => {
-expect(convertAbsolute('lib/Recursos/recursos2/Dos links.md')).toEqual(`C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\recursos2\\Dos links.md`);
+expect(convertAbsolute('lib/Recursos/recursos2/Dos_links.md')).toEqual(`C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\recursos2\\Dos_links.md`);
    });
  });
 
@@ -48,7 +48,7 @@ expect(convertAbsolute('lib/Recursos/recursos2/Dos links.md')).toEqual(`C:\\User
  });
 
  it('retorna un bolean, si path no es un archivo', () => {
-  expect(isDirectory(`C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos links.md`)).toBe(false);
+  expect(isDirectory(`C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos_links.md`)).toBe(false);
 
    });
 });
@@ -112,7 +112,7 @@ describe('nos retorne un array de archivo md', () => {
       'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba1.md',
       'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba2.md',
       'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\Recursos\\Prueba3.md',
-      'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos links.md'
+      'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos_links.md'
     ];
     expect(getFilesArray('C:/Users/KENGYA/Documents/Develop/LIM015-md-links/lib')).toEqual(arrayMd);
   });
@@ -137,17 +137,17 @@ describe('extraer links de los archivos .md', () => {
       {
         href: 'https://es.wikipedia.org/wiki/Markdown',
         text: 'Markdown',
-        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos links.md'
+        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos_links.md'
       },
       {
         href: 'https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg',
         text: 'mdlinks',
-        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos links.md'
+        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos_links.md'
       },
       {
         href: 'https://jestjs.io/es-ES/docs/manual-mocks',
         text: 'mocks',
-        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos links.md'
+        file: 'C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib\\recursos2\\Dos_links.md'
       }
     ];
     expect(searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib')).toEqual(arrayLinks);

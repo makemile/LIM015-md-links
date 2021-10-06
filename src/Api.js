@@ -122,8 +122,8 @@ const validateLinks = (arrayLinks) => { //mis array de links href
      
   
 }
-  saveArray = searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib')
-         validateLinks(saveArray);//la estoy consumiendo
+  // saveArray = searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib')
+  //        validateLinks(saveArray);//la estoy consumiendo
 
 //funcion de mdlinks debe ir dentro de una promesa, aca (declararlas) diagrama flujo! mdlinks juntarlas
 module.exports = {
