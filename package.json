@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "jest --verbose --coverage",
-    "cli": "node src/cli.js"
+    "cli": "node src/cli.js",
+    "eslint": "eslint --ext .js src/ test/"
   },
   "repository": {
     "type": "git",
