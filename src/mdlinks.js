@@ -16,13 +16,6 @@ const mdlinks = (path, options = {}) => {
         }
     });
  };
-
-//   mdlinks('../lib/', {validate : true}).then((res) => { //crear una promesa global//
-//     console.log(res,23);
-//      })
-//     .catch((error) =>{
-//      console.log(error);
-//      }); //map debo construir un array de prom
     
     module.exports = {mdlinks};
     

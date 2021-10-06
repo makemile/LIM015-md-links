@@ -10,17 +10,56 @@ const arguments = process.argv.slice(2);
         console.log(res))
      .catch(error => 
         console.log(error));
-   
-   
- }
-     else if (arguments.length === 2){
-        mdlinks(arguments[0], {validate:true})
-        .then(res =>  console.log(res))
-        .catch(error => console.log(error))
-    
         
-   } 
+
+        
+   
+ }else if (arguments.includes('--help')){
+     console.log(`
+     ===============================================================================
+                              ${chalk.blueBright.bold('INSTRUCCIONES') } 	      
+     ===============================================================================
+                             ${chalk.yellowBright('Hola, Bienvenido !!! ')}  
+       Lee las siguientes opciones: 👀 
+                                                                                    
+       ${chalk.greenBright('--validate')} Imprime: [{href:\\text:\\file:\\status:\\message}]    
+       ${chalk.magentaBright('--stats')} Imprime: Links Total: y Links Unicos:             
+       ${chalk.cyanBright('--stats --validate')} Imprime: Links Total, Links Unicos y Links Rotos
+       ${chalk.redBright.bold('En caso de no ingresar la opciones anteriores, impreme:[{href:\\text:\\file:]')} 
+      =============================================================================== `)
 
 
- console.log(process.argv, arguments,23);
- mdlinks(arguments[0], {validate:true}).then((res =>  console.log(res)),24);
+ }else if (arguments.includes('--validate') &&  arguments.includes('--stats')){
+    console.log('hola')
+    mdlinks(arguments[0], {validate:true})
+    .then((res) => {
+       console.log(`${(statsTotalUnique(res, true))} \n${(linkbroken(res, true))}`);
+})
+.catch((res) => {
+    console.log(res);
+})
+
+} else if (arguments.includes('--validate')) {
+    console.log('hola1')
+    mdlinks(arguments[0], {validate:true})
+    .then((res =>  console.log(res)),24)
+    .catch((res => console.log(res)));
+
+}else if (arguments.includes('--stats')){
+    console.log('hola2')
+    mdlinks(arguments[0], {validate:true})
+    .then((res) => {
+        console.log(statsTotalUnique(res, true));
+
+    })
+    .catch((res) => console.log(res));
+} else {
+    console.log('el comando no es valido')
+}
+
+
+
+
+
+//  console.log(process.argv, arguments,23);
+//  mdlinks(arguments[0], {validate:true}).then((res =>  console.log(res)),24);
