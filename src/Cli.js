@@ -9,7 +9,7 @@ const arguments = process.argv.slice(2);
      .then(res =>  
         console.log(res))
      .catch(error => 
-        console.log(error));
+          console.log(error));
         
 
         
@@ -56,10 +56,3 @@ const arguments = process.argv.slice(2);
 } else {
     console.log('el comando no es valido')
 }
-
-
-
-
-
-//  console.log(process.argv, arguments,23);
-//  mdlinks(arguments[0], {validate:true}).then((res =>  console.log(res)),24);
