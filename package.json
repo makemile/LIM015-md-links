@@ -1,5 +1,5 @@
 {
-  "name": "md-links",
+  "name": "md-links-stats",
   "version": "0.1.0",
   "description": "se crea una libreria que verifica las links dentro de cada archivo con extensión (markdown) y permite validar dichos links y realizar algunas estadisticas.",
   "directories": {
