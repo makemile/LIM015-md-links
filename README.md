@@ -370,43 +370,17 @@ Y por último, se habilitó la opción `--help`, de está manera el usuario pued
 ## md-links CLI
 [![Diagrama-en-blanco.png](https://i.postimg.cc/3wjdrd3x/Diagrama-en-blanco.png)](https://postimg.cc/Jyn1P7yf)
 
-## 6. Entregables
-
-Módulo instalable via `npm install <github-user>/md-links`. Este módulo debe
-incluir tanto **un ejecutable** como **una interfaz** que podamos importar con `require`
-para usarlo programáticamente.
-
-
 ---
-
-## 8. Pistas, tips y lecturas complementarias
-
-### FAQs
-
-#### ¿Cómo hago para que mi módulo sea _instalable_ desde GitHub?
-
-Para que el módulo sea instalable desde GitHub solo tiene que:
-
-- Estar en un repo público de GitHub
-- Contener un `package.json` válido
-
-Con el comando `npm install githubname/reponame` podemos instalar directamente
-desde GitHub. Ver [docs oficiales de `npm install` acá](https://docs.npmjs.com/cli/install).
-
-Por ejemplo, el [`course-parser`](https://github.com/Laboratoria/course-parser)
-que usamos para la currícula no está publicado en el registro público de NPM,
-así que lo instalamos directamente desde GitHub con el comando `npm install Laboratoria/course-parser`.
-
 ## 9. Checklist ✏️
 
 ### General
 
-- [ ] Puede instalarse via `npm install --global <github-user>/md-links`
+- [x] Puede instalarse via `npm install --global <github-user>/md-links`
 
 ### `README.md`
 
-- [ ] Un board con el backlog para la implementación de la librería.
-- [ ] Documentación técnica de la librería.
+- [x] Un board con el backlog para la implementación de la librería.
+- [x] Documentación técnica de la librería.
 - [x] Guía de uso e instalación de la librería
 
 ### API `mdLinks(path, opts)`

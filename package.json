@@ -44,6 +44,6 @@
   },
   "main": ".eslintrc.js",
   "bin": {
-    "md-links": "src/cli.js"
+    "md-links-stats": "src/cli.js"
   }
 }
