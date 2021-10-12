@@ -108,7 +108,7 @@ const validateLinks = (arrayLinks) => {
   return Promise.all(arraysPromise);
 };
 // saveArray = searchLinks('C:\\Users\\KENGYA\\Documents\\Develop\\LIM015-md-links\\lib')
-//        validateLinks(saveArray);//la estoy consumiendo
+//        validateLinks(saveArray);//estoy consumiendo la promesa
 
 module.exports = {
   existsPath,
