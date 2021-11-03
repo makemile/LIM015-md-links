@@ -1,4 +1,5 @@
-# Markdown Links 🔗 
+# 🔗Markdown Links 
+
 
 ## Índice
 
@@ -355,15 +356,17 @@ Broken: 1
 ### Instalación
 _Para instalar la librería use el comando_ :
 ```
+npm i md-links-kengya-moncada
 ```
 _Para desinstalar use el comando_:
 ```
+npm uninstall md-links-kengya-moncada
 ```
 Y por último, se habilitó la opción `--help`, de está manera el usuario pueda orientarse:
 [![comando-help.png](https://i.postimg.cc/g0wb47TF/comando-help.png)](https://postimg.cc/gwP72gpN)
 
 
-##Diagrama de flujo
+## Diagrama de flujo
 ### md-links API
 [![Diagrama-CLI-options-1.png](https://i.postimg.cc/L41GJfrD/Diagrama-CLI-options-1.png)](https://postimg.cc/NLQdVyG2)
 
